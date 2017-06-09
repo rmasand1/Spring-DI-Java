@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="myorg" class="com.roshnimasand.springdemo.domain.Organization">
+		<constructor-arg value="Google" index="0"></constructor-arg>
+		<constructor-arg value="1996" index="1"></constructor-arg>
+		<property name="postalCode" value="65656"></property>
+		<property name="employeeCount" value="10500"></property>
+		<property name="slogan" value="Organize the world's info!">
+		</property>
+		<property name="businessService" ref="ecommerceService"></property>
+	</bean>
+	<bean id="cloudService"
+		class="com.roshnimasand.springdemo.serviceimpl.CloudServiceImpl">
+	</bean>
+	<bean id="ecommerceService"
+		class="com.roshnimasand.springdemo.serviceimpl.EcommerceServiceImpl">
+	</bean>
+	<bean
+		class="com.roshnimasand.springdemo.serviceimpl.AgencyRecruitmentServiceImpl"
+		id="agency">
+	</bean>
+	<bean id="referral"
+		class="com.roshnimasand.springdemo.serviceimpl.ReferralRecruitmentServiceImpl">
+	</bean>
+	<bean id="myhrdept"
+		class="com.roshnimasand.springdemo.domain.HumanResourceDept">
+	<constructor-arg name="recruitmentService" ref="agency"></constructor-arg>
+	<constructor-arg name="organization" ref="myorg"></constructor-arg>
+	<property name="departmentName" value="Human Resource Department"></property>
+	</bean>
+</beans>
